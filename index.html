@@ -1,0 +1,1256 @@
+<!DOCTYPE >
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>智能大棚</title>
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-custom.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-switch.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.nstSlider.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/hexagons.css">
+    <link type="text/css" href="css/css/styles.css" rel="stylesheet" media="all" />
+    <link type="text/css" href="css/jindutiao.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/ipc/style1.css" />
+    <link rel="stylesheet" href="css/ipc/ipc_style.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
+
+    <link rel="stylesheet" id="pageloader-css" href="css/pageloader.css" type="text/css" media="all" />
+    <!--<link rel="stylesheet" href="css/fakeloader.css"/>-->
+    <!--<link rel="stylesheet" href="css/slick-theme.css"/>-->
+    <!--js-->
+    <!--部分插件  -->
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-switch.js"></script>
+    <script type="text/javascript" src="js/jquery.nstSlider.min.js"></script>
+
+    <script type="text/javascript" src='js/Script.js'></script>
+    <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/timeline.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/picture.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/curve.js"></script>
+
+    <script type="text/javascript" src='js/highchart/highcharts.js'></script>
+    <script type="text/javascript" src='js/highchart/exporting.js'></script>
+    <script type="text/javascript" src='js/highchart/chart.js'></script>
+    <script type="text/javascript" src='js/highchart/ystep.js'></script>
+
+    <script type="text/javascript" src='js/photoShow.js'></script>
+    <script type="text/javascript" src="js/slick.js"></script>
+    <script type="text/javascript" src='js/jindutiao.js'></script>
+    <script type="text/javascript" src="js/ipc/ipc.js"></script>
+    <!--<script src="./node_modules/echarts/dist/echarts.min.js"></script>-->
+    <!--<script src="js/pageloader.js" type="text/javascript"></script>-->
+    <!-- END CALL JS -->
+
+    <!--<script type="text/javascript" src="js/fakeloader.min.js"></script>-->
+    <!--数据查询-->
+    <script type="text/javascript" src="js/WSN/camera-1.1.js"></script>
+    <script type="text/javascript" src="js/WSN/WSNCamera.js"></script>
+    <script type="text/javascript" src="js/WSN/WSNHistory.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/WSN/WSNRTConnect.js"></script>
+
+</head>
+
+<body>
+    <div id="tab" style="background:#fff url(images/back2.jpg) no-repeat left top;background-size:100%;">
+        <div>
+            <div class="logo">Greenhous.智能大棚</div>
+            <div class="inform">
+                作物模式：<input id="informzuowu" type="text" value="菜苔" style="border: none;background-color:rgba(255, 255, 255, 0);" readonly/> 操作模式：
+                <input id="informmodel" type="text" value="智能模式" style="border: none;background-color:rgba(255, 255, 255, 0)" readonly/>
+                <!--特殊光照：<input type="text"  value="无" style="border: none;background-color:rgba(255, 255, 255, 0)" readonly/>-->
+                异常通知：
+                <marquee id="affiche" class="zhimu" align="middle" behavior="scroll" loop="-1" direction="left" width="12%" scrollamount="3" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()"></marquee>
+            </div>
+            <div class="afficheInform">暂无异常eel</div>
+            <ul class="tab_menu" id="main">
+                <li class="selected">
+                    <div class="menu"><img src="images/daPeng.png" class="menuImg change" id="menuImg1"></div>
+                </li>
+                <li>
+                    <div class="menu"><img src="images/countPintai.png" class="menuImg" id="menuImg2"></div>
+                </li>
+                <li>
+                    <div class="menu"><img src="images/safe.png" class="menuImg" id="menuImg3" /></div>
+                </li>
+            </ul>
+            <img src="images/shezhi.png" data-toggle="modal" data-target="#myModa1" style="width: 4.5vw;height: 4.5vw;position: absolute;z-index: 1;left:1vw;bottom: 2vw;">
+            <!--选项卡-->
+            <div class="tab_box">
+                <!--选项卡1-->
+                <div style="background:#fff url(images/back2.jpg) no-repeat left top;background-size:100%;">
+                    <div id="myCarousel" class="carousel slide">
+                        <ul class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active menu" style="margin-left: 0">
+                                <img src="images/huanjing.png" id="navImg1" />
+                                <p class="nav__label" id="label1">环境监测</p>
+                            </li>
+                            <li data-target="#myCarousel" data-slide-to="1" class="menu">
+                                <img src="images/titlePeople.png" id="navImg2" />
+                                <p class="nav__label" id="label2">人工控制</p>
+                            </li>
+                            <li data-target="#myCarousel" data-slide-to="2" class="menu">
+                                <img src="images/shenzhangNote.png" id="navImg3" />
+                                <p class="nav__label" id="ladel3">生长记录</p>
+                            </li>
+                            <li data-target="#myCarousel" data-slide-to="3" class="menu" id="label4">
+                                <img src="images/history.png" id="navImg4" />
+                                <p class="nav__label">历史数据</p>
+                            </li>
+                        </ul>
+                        <!-- Carousel items -->
+                        <div class="carousel-inner slick">
+                            <div class="active item">
+                                <div style="width:100%;height: 100%;">
+                                    <div class="pageTittle">环境监测</div>
+                                    <div class="content">
+                                        <div class="sun">
+                                            <img src="images/sun1.png" />
+                                            <div class="sunValue"><span>-℃~-℃</span>
+                                                <div class="time">当前时间：<span id="istime">17:00</span></div>
+                                            </div>
+                                        </div>
+                                        <ul id="hexGrid">
+                                            <li class="hex" style="margin-left: 9.5%;background-color: rgba(255,255,255,0.5)">
+                                                <div class="hexIn">
+                                                    <img src="images/2.png" style="" />
+                                                    <div class="pictureName">温度</div>
+                                                    <img class="picture names-all" src="images/Tem1.png" style="height: 40%;margin-top: 33%" />
+                                                    <div class="picturecount" id="tem">--℃</div>
+                                                </div>
+                                            </li>
+                                            <li class="hex">
+                                                <div class="hexIn">
+                                                    <img src="images/2.png" />
+                                                    <div class="pictureName">湿度</div>
+                                                    <img class="picture names-all" src="images/wendu.png" style="height: 40%;margin-top: 33%" />
+                                                    <div class="picturecount " id="hum">--%</div>
+                                                </div>
+                                            </li>
+                                            <li class="hex">
+                                                <div class="hexIn">
+                                                    <img src="images/2.png" />
+                                                    <div class="pictureName ">土壤温度</div>
+                                                    <img class="picture names-all" src="images/soilTem.png" style="height: 40%;margin-top: 33%" />
+                                                    <div class="picturecount " id="soiltem">--℃</div>
+                                                </div>
+                                            </li>
+                                            <li class="hex">
+                                                <div class="hexIn">
+                                                    <img src="images/2.png" alt="" />
+                                                    <div class="pictureName ">土壤水分</div>
+                                                    <img class="picture names-all" src="images/soilHum.png" style="height: 40%;margin-top: 33%" />
+                                                    <div class="picturecount " id="soilhum">--%</div>
+                                                </div>
+                                            </li>
+                                            <li class="hex juli">
+                                                <div class="hexIn">
+                                                    <img src="images/2.png" />
+                                                    <div class="pictureName ">CO2浓度</div>
+                                                    <img class="picture names-all" src="images/CO2.png" style="height: 40%;margin-top: 33%" />
+                                                    <div class="picturecount " id="carbon">--ppm</div>
+                                                </div>
+                                            </li>
+                                            <li class="hex">
+                                                <div class="hexIn">
+                                                    <img src="images/2.png" />
+                                                    <div class="pictureName ">光照度</div>
+                                                    <img class="picture names-all" src="images/titleLight.png" style="height: 40%;margin-top: 33%" />
+                                                    <div class="picturecount " id="light">--lux</div>
+                                                </div>
+                                            </li>
+                                            <li class="hex" style="margin-top: 0">
+                                                <div class="hexIn">
+                                                    <img src="images/2.png" alt="" />
+                                                    <div class="pictureName ">风速</div>
+                                                    <img class="picture names-all" src="images/风速3.png" style="height: 40%;margin-top: 33%" />
+                                                    <div class="picturecount " id="fengsu">--m/s</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div style="width:100%;height: 100%;">
+                                    <div class="pageTittle">人工控制</div>
+                                    <div class="content2">
+                                        <div class="row">
+                                            <div class="board" style="margin-left: 0">
+                                                <div class="board_title">电热风机</div>
+                                                <img src="images/offimages/offlinedianreji.png" id="img01" />
+                                                <div class="off" title="off" id="off1" data-name="0">关</div>
+                                            </div>
+                                            <div class="board">
+                                                <div class="board_title">湿帘风机</div><img src="images/offimages/offlineHumFan.png" id="img02" />
+                                                <div class="off" title="off" id="off2" data-name="0">关</div>
+                                            </div>
+                                            <div class="board">
+                                                <div class="board_title">喷淋</div><img src="images/offimages/offlinepenlin.png" id="img03" />
+                                                <div class="off" title="off" id="off3" data-name="0">关</div>
+                                            </div>
+                                            <div class="board">
+                                                <div class="board_title">排风扇</div><img src="images/offimages/offlinefna.png" id="img04" />
+                                                <div class="off" title="off" id="off4" data-name="0">关</div>
+                                            </div>
+                                            <div class="board">
+                                                <div class="board_title">地热管道</div><img src="images/offimages/offlinediWorm.png" id="img05" />
+                                                <div class="off" title="off" id="off5" data-name="0">关</div>
+                                            </div>
+                                            <div class="board" style="margin-top:2.5%;margin-left: 0">
+                                                <div class="board_title">滴灌</div><img src="images/offimages/offlinediguang.png" id="img06" />
+                                                <div class="off" title="off" id="off6" data-name="0">关</div>
+                                            </div>
+                                            <div class="board" style="margin-top:  2.5%">
+                                                <div class="board_title">CO2发生器</div><img src="images/offimages/offlineganBing.png" id="img07" />
+                                                <div class="off" title="off" id="off7" data-name="0">关</div>
+                                            </div>
+                                            <div class="board" style="margin-top:  2.5%">
+                                                <div class="board_title">补光灯</div><img src="images/offimages/offlinebuguangdeng.png" id="img08" />
+                                                <div class="off" title="off" id="off8" data-name="0">关</div>
+                                            </div>
+                                            <div class="board" style="margin-top: 2.5%">
+                                                <div class="board_title">遮阳板</div><img src="images/offimages/offlinezheyangp.png" id="img09" />
+                                                <div class="off" title="off" id="off9" data-name="0">关</div>
+                                            </div>
+                                            <div class="control" style="margin-top: 2.5%;overflow: hidden">
+                                                <div>&nbsp; </div>
+                                                <div class="modeloff"><img src="images/anniu1.png" style="height: 70%;cursor: pointer;margin-top: 0" />
+                                                    <!--<span>全关</span>-->
+                                                </div>
+                                                <div class="modelset" id="autoMode" title="modelSmart">智能模式</div>
+                                            </div>
+                                        </div>
+                                        <div class="controlShow" style=" width: 100%;margin-top:  2.52%">
+                                            <div class="board valueShow" style="margin-left: 0">
+                                                <div class="board_title">空气温度(℃)</div>
+                                                <div><img id="imgtem" src="images/hengxian1.png" /></div>
+                                                <div class="fone" id="ttem">15</div>
+                                            </div>
+                                            <div class="board valueShow" style="margin-left: 0">
+                                                <div class="board_title">空气湿度(%)</div>
+                                                <div><img id="imghum" src="images/hengxian1.png" /></div>
+                                                <div class="fone" id="thum">0</div>
+                                            </div>
+                                            <div class="board valueShow" style="margin-left: 0">
+                                                <div class="board_title">土壤温度(℃)</div>
+                                                <div><img id="imgsoiltem" src="images/hengxian1.png" /></div>
+                                                <div class="fone" id="tsoiltem">15</div>
+                                            </div>
+                                            <div class="board valueShow" style="margin-left: 0">
+                                                <div class="board_title">土壤湿度(%)</div>
+                                                <div><img id="imgsoilhum" src="images/hengxian1.png" /></div>
+                                                <div class="fone" id="tsoilhum">15</div>
+                                            </div>
+                                            <div class="board valueShow" style="margin-left: 0">
+                                                <div class="board_title">CO2浓度(ppm)</div>
+                                                <div><img id="imgCO2" src="images/hengxian1.png" /></div>
+                                                <div class="fone" id="tcarbon">0</div>
+                                            </div>
+                                            <div class="board valueShow" style="margin-left: 0">
+                                                <div class="board_title">光照强度(lux)</div>
+                                                <div><img id="imglight" src="images/hengxian1.png" /></div>
+                                                <div class="fone" id="tlight">15</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div style="width:100%;height: 100%;">
+                                    <div class="pageTittle">生长记录</div>
+                                    <div class="content3">
+                                        <div class="content3tittle"><span style="display: block;float: left;line-height: 40px;margin-left: 10px;">生长记录功能：</span>
+                                            <div class="board_body" style="position: absolute;left: 120px; top: 0.45vw;">
+                                                <input id="buttonJilu" class="switch-size switch" type="checkbox" name="my-checkbox" checked data-size="mini">
+                                            </div>
+                                            <!--<span style="line-height: 40px">拍照时间间隔：</span><input id="thetime" type="text" value="1h" style=" height:30px;background-color: rgba(255, 255, 255, 0); border: 1px solid #999;" />-->
+                                            <div class="thetime">
+                                                <select class="form-control" id="picSet" onselect="selectCell()">
+                                            <option value="queryLast1H" onclick="alert('ok');selectCell()">最近1小时</option>
+                                            <option value="queryLast1D">最近1天</option>
+                                            <option value="queryLast5D">最近5天</option>
+                                            <option value="queryLast14D">最近2周</option>
+                                            <option value="queryLast1M">最近1月</option>
+                                            <option value="queryLast3M">最近3月</option>
+                                            <option value="queryLast6M">最近半年</option>
+                                            <option value="queryLast1Y">最近1年</option>
+                                        </select>
+
+                                                <button class="picsure">确定</button>
+                                                <div data-toggle="modal" data-target="#myModal11" style="float: right;cursor: pointer"><img src="images/video.png" style="height: 40px" /></div>
+                                            </div>
+                                        </div>
+                                        <!--图片曲线模块-->
+                                        <div class="btn-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="chart" title="历史记录图片">
+                                            <div class="plot_box photoDataDiv button-rounded glow_in">
+                                                <div class="chart_">
+                                                    <div class="chart_label">
+                                                        <li class="c_li_live_photo button-rounded photo_li c_current_li" querytime="1hour">最近1小时</li>
+                                                        <li class="c_li_1day button-rounded photo_li" querytime="1day">最近1天</li>
+                                                        <li class="c_li_5day button-rounded photo_li" querytime="5days">最近5天</li>
+                                                        <li class="c_li_2week button-rounded photo_li " querytime="14days">最近2周</li>
+                                                        <li class="c_li_1month button-rounded photo_li" querytime="1month">最近1月</li>
+                                                        <li class="c_li_3month button-rounded photo_li" querytime="3months">最近3月</li>
+                                                    </div>
+                                                    <div class="photoData-box">
+                                                        <div id="photoData_40" class="chart_plot dynamic_plot button-rounded glow_in" style="display:block;text-align: center;font-size:14px">
+                                                            <div style="color:gray;padding-top:80px;font-size:16px">您查询的时间段没有数据</div>
+                                                        </div>
+                                                        <div id="photoData_40" class="chart_plot dynamic_plot button-rounded glow_in" style="text-align: center;font-size:14px">
+                                                            <div style="color:gray;padding-top:80px;font-size:16px">您查询的时间段没有数据</div>
+                                                        </div>
+                                                        <div id="photoData_40" class="chart_plot dynamic_plot button-rounded glow_in" style="text-align: center;font-size:14px">
+
+                                                        </div>
+                                                        <div id="photoData_40" class="chart_plot dynamic_plot button-rounded glow_in" style="text-align: center;font-size:14px">
+                                                            <div style="color:gray;padding-top:80px;font-size:16px">您查询的时间段没有数据</div>
+                                                        </div>
+                                                        <div id="photoData_40" class="chart_plot dynamic_plot button-rounded glow_in" style="text-align: center;font-size:14px">
+                                                            <div style="color:gray;padding-top:80px;font-size:16px">您查询的时间段没有数据</div>
+                                                        </div>
+                                                        <div id="photoData_40" class="chart_plot dynamic_plot button-rounded glow_in" style="text-align: center;font-size:14px">
+                                                            <div style="color:gray;padding-top:80px;font-size:16px">您查询的时间段没有数据</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="popupImg" style="display: none;">
+                                                <div class="img_con">
+                                                    <div>
+                                                        <span id="img_hide" onclick="hideImg()">×</span>
+                                                        <!--<img src="http://api.zhiyun360.com:8002/static/1493793000.62.0.762115800628.jpeg">-->
+                                                        <img src="" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--<img id="picture1" src="images/file.png" style="position: absolute;left: 0;width: 12vw;cursor: pointer"/>-->
+                                            <!--<img id="picture2" src="images/file.png" style="position: absolute;left: 14vw;width: 12vw;cursor: pointer"/>-->
+                                            <!--<img id="picture3" src="images/file.png" style="position: absolute;left: 28vw;width: 12vw;cursor: pointer"/>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div style="width:100%;height: 100%;">
+                                    <div class="pageTittle">历史数据</div>
+                                    <div class="content3" style="background-color: white;text-align: center">
+                                        <span style="position: absolute;margin: 0 auto;left: 45%;line-height: 3;">历史数据曲线图</span>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="height:10%;position: absolute">
+                                            <select class="form-control" id="timeSet">
+                                        <option value="queryLast1H" >最近1小时</option>
+                                        <option value="queryLast6H">最近6小时</option>
+                                        <option value="queryLast12H">最近12小时</option>
+                                        <option value="queryLast1D">最近1天</option>
+                                        <option value="queryLast7D">最近1周</option>
+                                        <option value="queryLast14D">最近2周</option>
+                                        <option value="queryLast1M">最近1月</option>
+                                        <option value="queryLast3M">最近3月</option>
+                                        <option value="queryLast6M">最近半年</option>
+                                        <option value="queryLast1Y">最近1年</option>
+                                    </select>
+                                        </div>
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 10%;position: absolute;left:25%">
+                                            <button id="HistoryDisplay" class="btn btn-primary" style="width: 100px">查询</button>
+                                        </div>
+                                        <div id="container" style="width:100%;height:90%;margin-top: 5%">
+                                            <div id="tem-number"></div>
+                                            <div id="tr-number"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--选项卡2-->
+                <div class="hide" style="width: 100%;height: 100%;">
+                    <div class="pagetittle">阈值系统</div>
+                    <div class="content4">
+                        <div class="btn-group" style="width: 60%;height: 8%;">
+                            <a id="select" class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="width: 100%;height: 100%;line-height: 2.4vw;">
+                       菜苔
+                    </a>
+                            <img src="images/xiaoshanjiao.png" style="position: absolute;height: 60%;right: 0;top: 0.5vw;" />
+                            <ul class="dropdown-menu" id="menus">
+                                <!-- dropdown menu links -->
+                                <li class="list">菜苔</li>
+                                <li class="list">青椒</li>
+                                <li class="list">胡萝卜</li>
+                                <li class="list">西红柿</li>
+                                <li id="tianjia" data-toggle="modal" data-target="#myModal7" style="background-color: #0096F5;height: 34px"><img src="images/tianjia.png" style="height: 24px;margin-left: 45%;" /></li>
+                            </ul>
+                        </div>
+                        <button class="YuzhiButton" style="background-color: rgb(66, 139, 202)">返回初始作物环境</button>
+                        <button class="YuzhiButton" data-toggle="modal" data-target="#myModal3">使用</button>
+                        <div class="punch">
+                            <div id="bonfire-pageloader" style="display: none">
+                                <!-- BEGIN THE ICON -->
+                                <div class="bonfire-pageloader-icon">
+                                    <svg style="margin-left: 36.5vw;margin-top: 6vw;" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+		<path id="loading-12-icon" d="M291,82.219c0,16.568-13.432,30-30,30s-30-13.432-30-30s13.432-30,30-30S291,65.65,291,82.219z
+			 M261,404.781c-15.188,0-27.5,12.312-27.5,27.5s12.312,27.5,27.5,27.5s27.5-12.312,27.5-27.5S276.188,404.781,261,404.781z
+			 M361.504,113.167c-4.142,7.173-13.314,9.631-20.487,5.489c-7.173-4.141-9.631-13.313-5.49-20.487
+			c4.142-7.173,13.314-9.631,20.488-5.489C363.188,96.821,365.645,105.994,361.504,113.167z M188.484,382.851
+			c-14.348-8.284-32.697-3.368-40.98,10.98c-8.285,14.349-3.367,32.696,10.98,40.981c14.35,8.283,32.697,3.367,40.98-10.981
+			C207.75,409.482,202.834,391.135,188.484,382.851z M421.33,184.888c-8.368,4.831-19.07,1.965-23.901-6.404
+			c-4.832-8.368-1.965-19.07,6.404-23.902c8.368-4.831,19.069-1.964,23.9,6.405C432.566,169.354,429.699,180.056,421.33,184.888z
+			 M135.399,329.767c-8.285-14.35-26.633-19.266-40.982-10.982c-14.348,8.285-19.264,26.633-10.979,40.982
+			c8.284,14.348,26.632,19.264,40.981,10.98C138.767,362.462,143.683,344.114,135.399,329.767z M436.031,277.249
+			c-11.044,0-20-8.953-20-19.999c0-11.045,8.955-20.001,20.001-20.001c11.044,0,19.999,8.955,19.999,20.002
+			C456.031,268.295,447.078,277.249,436.031,277.249z M115.97,257.251c-0.001-16.57-13.433-30.001-30.001-30.002
+			c-16.568,0.001-29.999,13.432-30,30.002c0.001,16.566,13.433,29.998,30.001,30C102.538,287.249,115.969,273.817,115.97,257.251z
+			 M401.333,364.248c-10.759-6.212-14.446-19.97-8.234-30.73c6.212-10.759,19.971-14.446,30.731-8.233
+			c10.759,6.211,14.445,19.971,8.232,30.73C425.852,366.774,412.094,370.46,401.333,364.248z M135.398,184.736
+			c8.285-14.352,3.368-32.698-10.98-40.983c-14.349-8.283-32.695-3.367-40.981,10.982c-8.282,14.348-3.366,32.696,10.981,40.981
+			C108.768,204,127.115,199.082,135.398,184.736z M326.869,421.328c-6.902-11.953-2.807-27.242,9.148-34.145
+			s27.243-2.806,34.146,9.149c6.902,11.954,2.806,27.243-9.15,34.145C349.059,437.381,333.771,433.284,326.869,421.328z
+			 M188.482,131.649c14.352-8.286,19.266-26.633,10.982-40.982c-8.285-14.348-26.631-19.264-40.982-10.98
+			c-14.346,8.285-19.264,26.633-10.98,40.982C155.787,135.017,174.137,139.932,188.482,131.649z"/>
+		</svg>
+                                </div>
+                                <!-- END PLACE LOADING ICON IN THE MIDDLE OF THE PAGE -->
+
+                            </div>
+
+                            <table cellpadding="0" cellspacing="0" border="0" class="table-punch" id="punch-table">
+                                <tbody style="cursor: pointer">
+                                    <tr>
+                                        <td colspan="3" id="punchTitle">菜苔生长环境</td>
+                                    </tr>
+                                    <tr style="background-color: rgba(255, 255, 255, 0.1)">
+                                        <td></td>
+                                        <td>白天</td>
+                                        <td>夜晚</td>
+                                    </tr>
+                                    <tr>
+                                        <td>昼夜时间</td>
+                                        <td data-toggle="modal" data-target="#myModal4" id="Datetime"><input id="daytime1" value="7" readonly/>:00~<input id="daytime2" value="20" readonly/>:00</td>
+                                        <td data-toggle="modal" data-target="#myModal4" id="nighttime"><input id="nighttime1" value="20" readonly/>:00~<input id="nighttime2" value="7" readonly/>:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>空气温度</td>
+                                        <td data-toggle="modal" data-target="#myModal5" id="dateTem"><input id="tem1" value="18" readonly/>℃~<input id="tem2" value="20" readonly/>℃</td>
+                                        <td data-toggle="modal" data-target="#myModal5" id="nightTem"><input id="tem3" value="18" readonly/>℃~<input id="tem4" value="20" readonly/>℃</td>
+                                    </tr>
+                                    <tr>
+                                        <td>空气湿度</td>
+                                        <td data-toggle="modal" data-target="#myModal06" id="dateHum"><input id="hum1" value="18" readonly/>%~<input id="hum2" value="20" readonly/>%</td>
+                                        <td data-toggle="modal" data-target="#myModal06" id="nightHum"><input id="hum3" value="18" readonly/>%~<input id="hum4" value="20" readonly/>%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>土壤温度</td>
+                                        <td data-toggle="modal" data-target="#myModal07" id="dateSoilTem"><input id="soiltem1" value="18" readonly/>℃~<input id="soiltem2" value="20" readonly/>℃</td>
+                                        <td data-toggle="modal" data-target="#myModal07" id="nightSoilTem"><input id="soiltem3" value="18" readonly/>℃~<input id="soiltem4" value="20" readonly/>℃</td>
+                                    </tr>
+                                    <tr>
+                                        <td>土壤湿度</td>
+                                        <td data-toggle="modal" data-target="#myModal08" id="dateSoilHum"><input id="soilhum1" value="18" readonly/>%~<input id="soilhum2" value="20" readonly/>%</td>
+                                        <td data-toggle="modal" data-target="#myModal08" id="nightSoilHum"><input id="soilhum3" value="18" readonly/>℃~<input id="soilhum4" value="20" readonly/>℃</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CO2浓度</td>
+                                        <td data-toggle="modal" data-target="#myModal09" id="dateCO2">
+                                            <input id="CO2value1" value="18" readonly/>ppm~<input id="CO2value2" value="20" readonly/>ppm</td>
+                                        <td data-toggle="modal" data-target="#myModal09" id="nightCO2">
+                                            <input id="CO2value3" value="18" readonly/>ppm~<input id="CO2value4" value="20" readonly/>ppm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>光照强度</td>
+                                        <td data-toggle="modal" data-target="#myModal10" id="dateLight">
+                                            <input id="lightvalue1" value="18" readonly/>Lux~<input id="lightvalue2" value="20" readonly/>Lux</td>
+                                        <td data-toggle="modal" data-target="#myModal10" id="nightLight">
+                                            <input id="lightvalue3" value="18" readonly/>Lux~<input id="lightvalue4" value="20" readonly/>Lux</td>
+                                    </tr>
+                                    <!--<tr>-->
+                                    <!--<td>特殊光照</td><td>-->
+                                    <!--<div class="board_body">-->
+                                    <!--<input id="buttonYuzhi" class="switch-size switch" type="checkbox" name="my-checkbox" checked data-size="mini">-->
+                                    <!--</div>-->
+                                    <!--<div class="board_body">-->
+                                    <!--<button type="button" class="btn btn-primary cameraBtn" data-toggle="modal" data-target="#myModal1"><img src="images/遥控.png" style="width: 30px;"/></button>-->
+                                    <!--</div>-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                    <!--<div class="colorSelect">-->
+                                    <!--<div style="background-color: white" id="colorWhite"><div class="dui " id="dui1" style="width: 100%;height: 100%;font-size: 20px;margin-top: 10%">&#10004</div></div>-->
+                                    <!--<div style="background-color: red" id="colorRed"><div class="dui duigou" id="dui2" style="width: 100%;height: 100%;font-size: 20px;margin-top: 10%;color:white;">&#10004</div></div>-->
+                                    <!--<div style="background-color: #ff04e8" id="colorFf"><div class="dui duigou" id="dui3" style="width: 100%;height: 100%;font-size: 20px;margin-top: 10%">&#10004</div></div>-->
+                                    <!--<div style="background-color: blue" id="colorBlue"><div class="dui duigou" id="dui4" style="width: 100%;height: 100%;font-size: 20px;margin-top: 10%;color:white;">&#10004</div></div>-->
+                                    <!--<div style="background-color: #02ffff" id="color02"><div class="dui duigou" id="dui5" style="width: 100%;height: 100%;font-size: 20px;margin-top: 10%">&#10004</div></div>-->
+                                    <!--<div style="background-color: #06ff29" id="color06"><div class="dui duigou" id="dui6" style="width: 100%;height: 100%;font-size: 20px;margin-top: 10%">&#10004</div></div>-->
+                                    <!--<div style="background-color: yellow" id="colorYellow"><div class="dui duigou" id="dui7" style="width: 100%; height: 100%;font-size: 20px;margin-top: 10%">&#10004</div></div>-->
+                                    <!--</div>-->
+                                    <!--</td>
+                            <!--<div class="openColor" title="white">颜色选择</div>-->
+                                    <!--</tr>&ndash;&gt;-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--选项卡3-->
+                <div class="hide" style="width: 100%;height: 100%;">
+                    <div class="pagetittle">大棚安全</div>
+                    <div class="content5" style="overflow: hidden;">
+                        <div class="vcr">
+                            <div class="vcrText"><span>风速:</span>
+                                <div class="wrapper">
+                                    <div class="load-bar">
+                                        <div class="load-bar-inner" data-loading="0"><span id="counter"></span> </div>
+                                    </div>
+                                </div>
+                                <span style="left: 470px;">风速等级:--</span>
+                            </div>
+                            <img id="peple" src="images/peopleSensor.png" style="width: 6%;right:2%;;top:10%;position: absolute" class="b" />
+                        </div>
+                        <div class="xiangji">
+                            <div class="row" style="height: 100%;padding: 5px">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 modalCol" style="padding: 0;height: 100%;background-color: #555">
+                                    <img class="modalImgDiv" id="vidioDiv" src="images/camera.jpg">
+                                    <div class="load-title">正在连接…</div>
+                                    <div class="loader1">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 modalCol " style="margin-top: 3vw">
+                                    <div class="control-direc">
+                                        <table>
+                                            <tr>
+                                                <td></td>
+                                                <td><button class="direc up" id="up1" disabled>上</button></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><button class="direc left" id="left1" disabled>左</button></td>
+                                                <td><button class="openDiv" id="turnon" onclick="show()" title="off"></button> </td>
+                                                <td><button class="direc right" id="right1" disabled>右</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td><button class="direc bottom" id="under1" disabled>下</button></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <table class="cameraTable">
+                                        <tr>
+                                            <td>
+                                                <button id="ct_v" type="button" class="btn btn-primary btn-block" style="margin-left: 20px" disabled>上下巡航</button>
+                                            </td>
+                                            <td>
+                                                <button id="ct_h" type="button" class="btn btn-primary btn-block" disabled>左右巡航</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button id="ct_c" type="button" class="btn btn-primary btn-block" style="margin-left: 20px" disabled>全局巡航</button>
+                                            </td>
+                                            <td>
+                                                <button id="ct_paizhao" type="button" class="btn btn-primary btn-block" disabled>拍照</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--设置弹窗-->
+    <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    添加新作物
+                </div>
+                <div class="modal-body" style="position: relative;">
+                    <div class="input-group  input-id" style="padding: 15px;">
+                        <span class="input-group-addon" style="width: 9rem !important; padding: 0;">作物名称</span>
+                        <input id="name" type="text" class="form-control" style="width: 32em;">
+                    </div>
+                    <div id="suertianjia" class="suer" data-dismiss="modal" style="border-bottom-left-radius: 6px;">确定</div>
+                    <div class="sueroff" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--设置弹窗-->
+    <div class="modal fade" id="myModa1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 700px">
+            <div class="modal-content" style="width: 700px;height: 400px;top: 10px; padding:10px">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <ul id="myTab" class="nav nav-tabs " style="height: 42px;width: 90%;top: 30px;position: relative;left: 0;">
+                        <li class="active"><a href="#home" data-toggle="tab">ID与KEY</a></li>
+                        <li><a href="#macinto" data-toggle="tab">MAC地址</a></li>
+                        <li><a href="#vcr1" data-toggle="tab">生长摄像头</a></li>
+                        <li><a href="#vcr2" data-toggle="tab">安防摄像头</a></li>
+                        <li><a href="#jmeter" data-toggle="tab">版本信息</a></li>
+                    </ul>
+                </div>
+                <div class="modal-body" style="position: relative;padding: 15px 15px 36px 15px;height: 85%">
+                    <div id="myTabContent" class="tab-content" style="width: 100%;">
+                        <div class="tab-pane fade in active" id="home" style="width:100%;height:100%;">
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;">服务器</span>
+                                <input type="text" class="form-control" placeholder="127.0.0.1" id="server_address" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" id="id_span" style="width:10rem !important; padding: 0;">ID</span>
+                                <input type="text" class="form-control" placeholder="" id="id_address" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;">KEY</span>
+                                <input type="text" class="form-control" placeholder="" id="key_address" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;background-color: rgba(255,255,255,0);border: none"></span>
+                                <div style="width: 40em;">
+                                    <div class="modal-in-footer" style="padding: 15px 0 15px 15px;text-align: right;margin-top:35px;">
+                                        <button type="button" class="btn btn-primary modal_scan" id="id_scan" style="width: 8vw;">扫码</button>
+                                        <button type="button" class="btn btn-default modal_confirm" id="id_confirm" style="width: 8vw;margin-bottom: 0;margin-left: 5px;">确认</button>
+                                        <button type="button" class="btn btn-default modal_share" id="id_share" style="width: 8vw;margin-bottom: 0;margin-left: 5px;">分享</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="macinto" style="height: 100%;overflow-y:auto;">
+                            <div class="input-group  input-id" style="margin-top: 0">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">温湿度</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_002" readonly>
+                            </div>
+                            <br/>
+                            <div class="input-group input-id" style="margin-top: 0">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">土壤</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_862" readonly>
+                            </div>
+                            <br/>
+                            <div class="input-group  input-id" style="margin-top: 0">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">CO2</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_028" readonly>
+                            </div>
+                            <div class="input-group  input-id">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">继电器</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_810" readonly>
+                            </div>
+                            <div class="input-group  input-id">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">电磁阀</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_850" readonly>
+                            </div>
+                            <div class="input-group  input-id">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">步进电机</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_851" readonly>
+                            </div>
+                            <div class="input-group  input-id">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">风扇</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_007" readonly>
+                            </div>
+                            <div class="input-group  input-id">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">声光报警器</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_008" readonly>
+                            </div>
+                            <div class="input-group  input-id" style="margin-top: 20px">
+                                <span class="input-group-addon" style="width:9rem !important; padding: 0;">光照度</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_001" readonly>
+                            </div>
+                            <div class="input-group  input-id">
+                                <span class="input-group-addon" style="width:9rem !important; padding: 0;">人体红外</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_004" readonly>
+                            </div>
+                            <div class="input-group  input-id">
+                                <span class="input-group-addon" style="width:9rem !important; padding: 0;">RGB灯</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_003" readonly>
+                            </div>
+                            <div class="input-group  input-id">
+                                <span class="input-group-addon" style="width: 9rem !important; padding: 0;">风速</span>
+                                <input type="text" class="form-control" placeholder="" style="width: 40em;background-color: #ffffff;" id="type_860" readonly>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="vcr1" style="height: 100%;">
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" id="saddr" style="width: 10rem !important; padding: 0;">摄像头地址</span>
+                                <input type="text" class="form-control" value="Camera:192.168.1.100:81" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width:10rem !important; padding: 0;">摄像头类型</span>
+                                <input type="text" class="form-control" value="H3-Series" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;">用户名</span>
+                                <input type="text" class="form-control" value="admin" style="width: 40em;">
+                            </div>
+                            <div class="input-group  input-id" style="margin: 0 auto; top:20px;">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;">地址</span>
+                                <input type="text" class="form-control" value="admin" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;background-color: rgba(255,255,255,0);border: none"></span>
+                                <div style="width: 40em;">
+                                    <div class="modal-in-footer" style="padding: 15px 0 15px 15px;text-align: right;margin-top:35px;">
+                                        <button type="button" class="btn btn-primary modal_scan" style="width: 8vw;">扫码</button>
+                                        <button type="button" class="btn btn-default modal_confirm" style="width: 8vw;margin-bottom: 0;margin-left: 5px;">确认</button>
+                                        <button type="button" class="btn btn-default modal_share" style="width: 8vw;margin-bottom: 0;margin-left: 5px;">分享</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="vcr2" style="height: 100%;">
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;">摄像头地址</span>
+                                <input type="text" class="form-control" value="Camera:192.168.1.100:81" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width:10rem !important; padding: 0;">摄像头类型</span>
+                                <input type="text" class="form-control" value="H3-Series" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;">用户名</span>
+                                <input type="text" class="form-control" value="admin" style="width: 40em;">
+                            </div>
+                            <div class="input-group  input-id" style="margin: 0 auto;top:20px;">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;">地址</span>
+                                <input type="text" class="form-control" value="admin" style="width: 40em;">
+                            </div>
+                            <br/>
+                            <div class="input-group  input-id" style="margin: 0 auto">
+                                <span class="input-group-addon" style="width: 10rem !important; padding: 0;background-color: rgba(255,255,255,0);border: none"></span>
+                                <div style="width: 40em;">
+                                    <div class="modal-in-footer" style="padding: 15px 0 15px 15px;text-align: right;margin-top:35px;">
+                                        <button type="button" class="btn btn-primary modal_scan" style="width: 8vw;">扫码</button>
+                                        <button type="button" class="btn btn-default modal_confirm" style="width: 8vw;margin-bottom: 0;margin-left: 5px;">确认</button>
+                                        <button type="button" class="btn btn-default modal_share" style="width: 8vw;margin-bottom: 0;margin-left: 5px;">分享</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="jmeter">
+                            <p class="text-center" style="margin: 5px">当前版本：<span class="text-red" style="color: red">v1.0.20170325</span></p>
+                            <p class="text-center">最新版本：v1.0.20170325</p>
+                            <div class="form-group" style="margin: 5px">
+                                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-3 col-lg-4 col-md-4 col-sm-6">
+                                    <button id="setUp" type="button" class="btn btn-danger btn-block" style="width: 100%;margin-left: 0">升级</button>
+                                    <button id="look" type="button" class="btn btn-danger btn-block" style="width: 100%;margin-left: 0;margin-top: 10px;background-color: #eaac4e;border-color: #eaac4e">查看升级日志</button>
+                                    <div class="lookpage lookhide">暂无更新日志</div>
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--昼夜时间设定-->
+    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <span>白天与夜晚时间设定</span>
+                    <hr width="98%" />
+                </div>
+                <div class="modal-body" style="height: 200px">
+                    <div><img class="smallImg" src="images/night.png" />
+                        <img class="smallImg" src="images/day.png" style="width: 40px;height: 40px;margin-left: 100px" />
+                        <img class="smallImg" src="images/night.png" style="margin-left: 100px" />
+                    </div>
+                    <span style="float: left;margin-left: 15px">昼夜时间设定:</span>
+                    <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="nstSlider" id="motorNstSlider" data-range_min="0" data-range_max="24" data-cur_min="6" data-cur_max="18">
+                                <div class="bar"></div>
+                                <div class="leftGrip"></div>
+                                <div class="rightGrip"></div>
+                            </div>
+                            <div class="labelgroup">
+                                <label class="leftLabel" id="value1">0</label>
+                                <label class="leftLabel" id="value3" style="margin-left: 20px;color: rgb(66, 139, 202)"></label>
+                                <label class="rightLabel" id="value4" style="margin-left: 200px;color: rgb(66, 139, 202)"></label>
+                                <label class="leftLabel" id="value2" style="margin-left: 20px">24</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="suer" id="suretime" style="border-bottom-left-radius: 6px;" data-dismiss="modal">确定</div>
+                    <div class="sueroff" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--阈值设置-->
+    <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <span>白天与夜晚温度阈值设定</span>
+                    <hr width="98%" />
+                </div>
+                <div class="modal-body">
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px">白天<span class="yuzhicount">温度</span>设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="nstSlider" id="TemNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueTem1" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueTem2" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px;margin-top: 10px">晚上<span class="yuzhicount">温度</span>设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                                <div class="nstSlider" id="nightTemNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueTem3" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueTem4" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="suer" id="sureTem" style="border-bottom-left-radius: 6px;" data-dismiss="modal">确定</div>
+                    <div class="suer" style="right:0;border-bottom-right-radius: 6px;background-color:rgba(157, 157, 157, 0.65);" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal06" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <span>白天与夜晚湿度阈值设定</span>
+                    <hr width="98%" />
+                </div>
+                <div class="modal-body">
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px">白天湿度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="nstSlider" id="HumNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueHum1" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueHum2" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px;margin-top: 10px">晚上湿度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                                <div class="nstSlider" id="nightHumNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueHum3" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueHum4" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="suer" id="sureHum" style="border-bottom-left-radius: 6px;" data-dismiss="modal">确定</div>
+                    <div class="suer" style="right:0;border-bottom-right-radius: 6px;background-color:rgba(157, 157, 157, 0.65);" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal07" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <span>白天与夜晚土壤温度阈值设定</span>
+                    <hr width="98%" />
+                </div>
+                <div class="modal-body">
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px">白天土壤温度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="nstSlider" id="soilTemNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueSoilTem1" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueSoilTem2" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px;margin-top: 10px">晚上土壤温度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                                <div class="nstSlider" id="nightSoilTemNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueSoilTem3" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueSoilTem4" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="suer" id="sureSoilTem" style="border-bottom-left-radius: 6px;" data-dismiss="modal">确定</div>
+                    <div class="suer" style="right:0;border-bottom-right-radius: 6px;background-color:rgba(157, 157, 157, 0.65);" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal08" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <span>白天与夜晚土壤湿度阈值设定</span>
+                    <hr width="98%" />
+                </div>
+                <div class="modal-body">
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px">白天土壤湿度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="nstSlider" id="soilHumNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueSoilHum1" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueSoilHum2" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px;margin-top: 10px">晚上土壤温度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                                <div class="nstSlider" id="nightSoilHumNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueSoilHum3" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueSoilHum4" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="suer" id="sureSoilHum" style="border-bottom-left-radius: 6px;" data-dismiss="modal">确定</div>
+                    <div class="suer" style="right:0;border-bottom-right-radius: 6px;background-color:rgba(157, 157, 157, 0.65);" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal09" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <span>白天与夜晚CO2浓度阈值设定</span>
+                    <hr width="98%" />
+                </div>
+                <div class="modal-body">
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px">白天CO2浓度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="nstSlider" id="co2NstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueco21" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueco22" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px;margin-top: 10px">晚上CO2浓度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                                <div class="nstSlider" id="nightco2NstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valueco23" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valueco24" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="suer" id="sureCO2" style="border-bottom-left-radius: 6px;" data-dismiss="modal">确定</div>
+                    <div class="suer" style="right:0;border-bottom-right-radius: 6px;background-color:rgba(157, 157, 157, 0.65);" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <span>白天光照度阈值设定</span>
+                    <hr width="98%" />
+                </div>
+                <div class="modal-body">
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px">白天光照度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="nstSlider" id="LightNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valuelight1" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valuelight2" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 100%;height: 40px;">
+                        <span style="float: left;margin-left: 15px">夜晚光照度设定:</span>
+                        <div class="row" style="float: left;margin-top: 4px;margin-left: 35px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="nstSlider" id="nightNstSlider" data-range_min="0" data-range_max="100" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="labelgroup">
+                                    <label class="leftLabel" id="valuelight3" style="margin-left: 0"></label>
+                                    <label class="rightLabel" id="valuelight4" style="margin-left:260px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="suer" id="sureLight" style="border-bottom-left-radius: 6px;" data-dismiss="modal">确定</div>
+                    <div class="suer" style="right:0;border-bottom-right-radius: 6px;background-color:rgba(157, 157, 157, 0.65);" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 85%;height: 85%;margin-top: 40px">
+            <div class="modal-content" style="overflow: hidden;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                    <span>摄像头</span>
+                    <hr width="98%" />
+                </div>
+                <div class="modal-body" style="height:78%">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 modalCol" style="height:98%;">
+                            <div class="modalImgDiv" id="vidioDiv1" style="height: 100%">
+                                <img id="img1" class="cameraBlock img-responsive" src="images/camera.jpg">
+                                <div class="load-title">正在连接…</div>
+                                <div class="loader1">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 modalCol " style="top: 3vw;">
+                            <div class="control-direc">
+                                <table>
+                                    <tr>
+                                        <td></td>
+                                        <td><button class="direc up" id="up">上</button></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><button class="direc left" id="left">左</button></td>
+                                        <td><button class="openDiv" title="off" id="turnon1" onclick="show1()"></button> </td>
+                                        <td><button class="direc right" id="right">右</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><button class="direc bottom" id="down">下</button></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <table class="cameraTable">
+                                <tr>
+                                    <td>
+                                        <button id="ct_v2" type="button" class="btn btn-primary btn-block" disabled>上下巡航</button>
+                                    </td>
+                                    <td>
+                                        <button id="ct_h2" type="button" class="btn btn-primary btn-block" disabled>左右巡航</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="ct_c2" type="button" class="btn btn-primary btn-block" disabled>全局巡航</button>
+                                    </td>
+                                    <td>
+                                        <button id="ct_paizhao2" type="button" class="btn btn-primary btn-block" style="background-color: #e8aa51;border-color: #f5f5f5;" disabled>拍照</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body" style="text-align: center;height: 100px">确认使用该模式？
+                    <div class="suer" id="suermoshi" style="border-bottom-left-radius: 6px;" data-dismiss="modal">确定</div>
+                    <div class="sueroff" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body" style="text-align: center;height: 100px"><span id="changename">确认删除？</span>
+                    <div id="suerdelete" class="suer" data-dismiss="modal" style="border-bottom-left-radius: 6px;">确定</div>
+                    <div class="sueroff" data-dismiss="modal">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade controlModal" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="height: 400px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel3">当前遥控</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center modalCol">
+                            <img id="yaokong" class="cameraBlock img-responsive" src="images/controller.png">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 modalCol">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3" style="margin-left: 7%;">
+                                    <div class="form-group">
+                                        <select class="selectpicker" data-style="btn-primary" data-width="100%" id="control_select">
+                                        <option>遥控模式</option>
+                                        <option>学习模式</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <table id="control_table">
+                                <tr>
+                                    <td><span class="id-letter">1</span></td>
+                                    <td><span class="id-letter">2</span></td>
+                                    <td><span class="id-letter">3</span></td>
+                                    <td><span class="id-letter">C</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="id-letter">4</span></td>
+                                    <td><span class="id-letter">5</span></td>
+                                    <td><span class="id-letter">6</span></td>
+                                    <td><span class="id-letter">D</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="id-letter">7</span></td>
+                                    <td><span class="id-letter">8</span></td>
+                                    <td><span class="id-letter">9</span></td>
+                                    <td><span class="id-letter">E</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="id-letter">0</span></td>
+                                    <td><span class="id-letter">A</span></td>
+                                    <td><span class="id-letter">B</span></td>
+                                    <td><span class="id-letter">F</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-primary" id="control_confirm">确认</button>-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal" id="control_close">关闭</button>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <!--小弹窗-->
+    <div id="toast">
+        <span id="toast_txt">
+	</span>
+    </div>
+
+</body>
+
+</html>

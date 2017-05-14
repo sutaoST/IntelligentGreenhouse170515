@@ -1,0 +1,133 @@
+.is_clickable {
+    cursor: hand;
+    cursor: pointer
+}
+
+.nstSlider {
+    cursor: hand;
+    cursor: pointer;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+    width: 300px;
+    height:14px;
+    background: #428bca;
+}
+
+.nstSlider .leftGrip.gripHighlighted {
+    background: #134
+}
+
+.nstSlider .rightGrip.gripHighlighted {
+    background: #134
+}
+
+.nstSlider .rightGrip, .nstSlider .leftGrip {
+    position: absolute;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    transform: translateY(-25%);
+    -webkit-transform: translateY(-25%);
+    box-shadow: 0 0 2px  #000;
+}
+
+.nstSlider .rightGrip, .nstSlider .leftGrip:focus{
+    outline: 0;
+}
+
+.nstSlider .bar {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: absolute;
+    background: #fff;
+    height: 10px;
+    top:2px;
+    bottom:2px;
+}
+
+.nstSlider .highlightPanel {
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: absolute;
+    background: #e87722;
+    height: 20px;
+    top: 0
+}
+
+.nstSlider1 {
+    cursor: hand;
+    cursor: pointer;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+    width: 300px;
+    height:14px;
+    background: #89ae82;
+}
+
+.nstSlider1 .leftGrip.gripHighlighted {
+    background: #134
+}
+
+.nstSlider1 .rightGrip.gripHighlighted {
+    background: #134
+}
+
+.nstSlider1 .rightGrip, .nstSlider1 .leftGrip {
+    position: absolute;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    transform: translateY(-25%);
+    -webkit-transform: translateY(-25%);
+    box-shadow: 0 0 2px  #000;
+}
+
+.nstSlider1 .rightGrip, .nstSlider1 .leftGrip:focus{
+    outline: 0;
+}
+
+.nstSlider1 .bar {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: absolute;
+    background: #fff;
+    height: 10px;
+    top:2px;
+    bottom:2px;
+}
+
+.nstSlider1 .highlightPanel {
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: absolute;
+    background: #e87722;
+    height: 20px;
+    top: 0
+}
+.modal-body{ height: 200px;position: relative}
+.leftLabel{margin-left: 0;}
+.rightLabel{margin-left: 260px;}

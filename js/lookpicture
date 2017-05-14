@@ -1,0 +1,4 @@
+jQuery("#News_Focus_02").focusImg({ flag: "fi10", hoverStop: true,speed:6000,clickTabToNav:false});
+jQuery(document).ready(function(){
+    jQuery(".fi_tab").css("width","375px");
+});
